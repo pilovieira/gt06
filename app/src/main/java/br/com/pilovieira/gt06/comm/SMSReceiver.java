@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
+import android.util.StringBuilderPrinter;
 import android.widget.Toast;
 
 import br.com.pilovieira.gt06.R;
@@ -24,13 +25,17 @@ public class SMSReceiver extends BroadcastReceiver {
 			Bundle extras = intent.getExtras();
 			if (extras == null)
 				return;
-			
-			SmsMessage sms = SmsMessage.createFromPdu((byte[]) ((Object[]) extras.get("pdus"))[0]);
-			
-			onReceive(context, sms.getOriginatingAddress(), sms.getMessageBody());
-		} catch (Exception e) {
-			Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG);
-		}
+
+			StringBuilder builder = new StringBuilder();
+
+			Object[] pdus = (Object[]) extras.get("pdus");
+			for (Object pdu : pdus)
+				builder.append(SmsMessage.createFromPdu((byte[]) pdu).getMessageBody());
+
+			SmsMessage sms = SmsMessage.createFromPdu((byte[]) pdus[0]);
+
+			onReceive(context, sms.getOriginatingAddress(), builder.toString());
+		} catch (Exception e) {}
 	}
 
 	public void onReceive(Context context, String sender, String message) {

@@ -39,8 +39,8 @@ public class LocationLogDigester {
         if (line == null)
             return;
         if (line.contains("q=")) {
-            lat = line.trim().split("q=")[1].split(",")[0];
-            lng = line.trim().split(",")[1].split("Speed")[0];
+            lat = line.trim().split("q=")[1].split(",")[0].replace("N","").replace("S", "-");
+            lng = line.trim().split(",")[1].split("Speed")[0].replace("E","").replace("W", "-");
         }
         if (line.contains("Speed:"))
             speed = line.trim().split("Speed:")[1].split("km/h")[0];
