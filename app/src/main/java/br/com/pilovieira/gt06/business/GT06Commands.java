@@ -19,7 +19,7 @@ public class GT06Commands {
     }
 
     private String go(String command) {
-        return command.replace("#", getPassword());
+        return command.replace("*", getPassword());
     }
 
     public String getLocation() {
@@ -27,47 +27,47 @@ public class GT06Commands {
     }
 
     public String lockVehicle() {
-        return go("stop#");
+        return go("#stopoil#*#");
     }
 
     public String unlockVehicle() {
-        return go("resume#");
+        return go("#supplyoil#*#");
     }
 
     public String begin() {
-        return go("begin#");
+        return go("#begin#*#");
     }
 
     public String monitor() {
-        return go("monitor#");
+        return go("#monitor#*#");
     }
 
     public String tracker() {
-        return go("tracker#");
+        return go("#tracker#*#");
     }
 
     public String check() {
-        return go("check#");
+        return go("#tcp#*#");
     }
 
     public String reset() {
-        return go("reset#");
+        return go("#reboot#*#");
     }
 
     public String changePassword(String oldPass, String newPass) {
-        return go(String.format("password%s %s", oldPass, newPass));
+        return go(String.format("#password#%s#%s#", oldPass, newPass));
     }
 
     public String authorizeNumber(String number) {
-        return go(String.format("admin# %s", number));
+        return go(String.format("#admin#*#%s#", number));
     }
 
     public String deleteNumber(String number) {
-        return go(String.format("noadmin# %s", number));
+        return go(String.format("#noadmin#*#%s#", number));
     }
 
-    public String timeZone(String timezone) {
-        return go(String.format("time zone# %s", timezone));
+    public String timeZone(String direction, String hours) {
+        return go(String.format("#timezone#*#%s#%s#00#", direction, hours));
     }
 
 }

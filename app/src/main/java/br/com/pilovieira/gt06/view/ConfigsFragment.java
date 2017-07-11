@@ -75,10 +75,10 @@ public class ConfigsFragment extends Fragment {
 
     @OnClick(R.id.btnTimeZone)
     public void btnTimeZoneClicked() {
-        ListenerProvider.openDialogOneParam(this, btnTimeZone, R.string.time_zone, new ListenerProvider.CommandOneParam() {
+        ListenerProvider.openDialogTwoParam(this, btnTimeZone, R.string.direction, R.string.hours, new ListenerProvider.CommandTwoParam() {
             @Override
-            public void apply(String timezone) {
-                emitter.emit(btnTimeZone.getText().toString(), commands.timeZone(timezone));
+            public void apply(String direction, String hours) {
+                emitter.emit(btnTimeZone.getText().toString(), commands.timeZone(direction, hours));
             }
         });
     }

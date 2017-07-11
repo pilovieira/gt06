@@ -38,14 +38,14 @@ public class LocationLogDigester {
     private void processLine(String line) {
         if (line == null)
             return;
-        if (line.contains("lat:"))
-            lat = line.trim().split(" ")[0].split(":")[1];
-        if (line.contains("lon:"))
-            lng = line.trim().split("lon:")[1];
-        if (line.contains("speed:"))
-            speed = line.trim().split(":")[1];
-        if (line.contains("T:"))
-            time = line.trim().split("T:")[1];
+        if (line.contains("q=")) {
+            lat = line.trim().split("q=")[1].split(",")[0];
+            lng = line.trim().split(",")[1].split("Speed")[0];
+        }
+        if (line.contains("Speed:"))
+            speed = line.trim().split("Speed:")[1].split("km/h")[0];
+        if (line.contains("Time:"))
+            time = "Time: " + line.trim().split("Time:")[1].split("IMEI")[0];
     }
 
     public String getLat() {

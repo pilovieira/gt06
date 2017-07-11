@@ -84,7 +84,8 @@
     <string name="tracker_mode">Tracker Mode</string>
     <string name="check_status">Check Status</string>
     <string name="adjust_timezone">Adjust TimeZone</string>
-    <string name="time_zone">Time Zone</string>
+    <string name="direction">Direction (W, E)</string>
+    <string name="hours">Hours</string>
     <string name="restart_tracker">Restart Tracker</string>
     <string name="are_you_sure">Are you sure ?</string>
     <string name="yes">Yes</string>
