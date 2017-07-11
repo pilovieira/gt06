@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="DATABASE_NAME">AccurateGT06Database</string>
+    <integer name="DATABASE_VERSION">1</integer>
+</resources>
