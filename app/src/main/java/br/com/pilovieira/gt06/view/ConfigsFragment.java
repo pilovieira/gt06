@@ -28,6 +28,8 @@ public class ConfigsFragment extends Fragment {
     @Bind(R.id.btnAuthorize) Button btnAuthorize;
     @Bind(R.id.btnRemoveAuth) Button btnRemoveAuth;
     @Bind(R.id.btnTimeZone) Button btnTimeZone;
+    @Bind(R.id.btnSetApn) Button btnSetApn;
+    @Bind(R.id.btnSetIpAndPort) Button btnSetIpAndPort;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,9 +75,29 @@ public class ConfigsFragment extends Fragment {
         });
     }
 
+    @OnClick(R.id.btnSetApn)
+    public void btnSetApnClicked() {
+        ListenerProvider.openDialogThreeParam(this, btnSetApn, R.string.apn_name, R.string.user, R.string.pass, new ListenerProvider.CommandThreeParam() {
+            @Override
+            public void apply(String name, String user, String pass) {
+                emitter.emit(btnSetApn.getText().toString(), commands.setAPN(name, user, pass));
+            }
+        });
+    }
+
+    @OnClick(R.id.btnSetIpAndPort)
+    public void btnSetIpAndPortClicked() {
+        ListenerProvider.openDialogTwoParam(this, btnSetIpAndPort, R.string.direction, R.string.hours, new ListenerProvider.CommandTwoParam() {
+            @Override
+            public void apply(String ip, String port) {
+                emitter.emit(btnSetIpAndPort.getText().toString(), commands.setIpAndPort(ip, port));
+            }
+        });
+    }
+
     @OnClick(R.id.btnTimeZone)
     public void btnTimeZoneClicked() {
-        ListenerProvider.openDialogTwoParam(this, btnTimeZone, R.string.direction, R.string.hours, new ListenerProvider.CommandTwoParam() {
+        ListenerProvider.openDialogTwoParam(this, btnTimeZone, R.string.ip, R.string.port, new ListenerProvider.CommandTwoParam() {
             @Override
             public void apply(String direction, String hours) {
                 emitter.emit(btnTimeZone.getText().toString(), commands.timeZone(direction, hours));

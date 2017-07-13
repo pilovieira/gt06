@@ -94,4 +94,14 @@ public class GT06Commands {
         return go("#ACC#OFF#*#");
     }
 
+    public String setAPN(String name, String user, String pass) {
+        if (user == null || user.isEmpty() || pass == null || pass.isEmpty())
+            return go(String.format("#apn#*#%s#", name));
+        return go(String.format("#apn#*#%s#%s#%s#", name, user, pass));
+    }
+
+    public String setIpAndPort(String ip, String port) {
+        return go(String.format("#IP#*#%s#%s#00#", ip, port));
+    }
+
 }

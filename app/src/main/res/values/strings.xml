@@ -100,5 +100,11 @@
     <string name="cancel_overspeed_alarm">Cancel Overspeed Alarm</string>
     <string name="acc_alarm">ACC Alarm</string>
     <string name="advanced_operations">Advanced Operations</string>
+    <string name="apn_config_commands">APN Config Commands</string>
+    <string name="set_apn">Set APN</string>
+    <string name="apn_name">APN Name</string>
+    <string name="user">APN User</string>
+    <string name="pass">APN Pass</string>
+    <string name="set_ip_and_port">Set IP and Port</string>
 
 </resources>
