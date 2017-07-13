@@ -26,6 +26,10 @@ public class GT06Commands {
         return String.format("tel:%s", prefs.getTrackerNumber());
     }
 
+    public String getLocationSms() {
+        return go("#smslink#*#");
+    }
+
     public String lockVehicle() {
         return go("#stopoil#*#");
     }
@@ -46,10 +50,6 @@ public class GT06Commands {
         return go("#tracker#*#");
     }
 
-    public String check() {
-        return go("#tcp#*#");
-    }
-
     public String reset() {
         return go("#reboot#*#");
     }
@@ -68,6 +68,30 @@ public class GT06Commands {
 
     public String timeZone(String direction, String hours) {
         return go(String.format("#timezone#*#%s#%s#00#", direction, hours));
+    }
+
+    public String activateGeoFence(String semidiameter) {
+        return go(String.format("#stockade#*#%s#", semidiameter));
+    }
+
+    public String cancelGeoFence() {
+        return go("#nostockade#*#");
+    }
+
+    public String activateSpeedAlarm(String speed) {
+        return go(String.format("#speed#*#%s#", speed));
+    }
+
+    public String cancelSpeedAlarm() {
+        return go("#nospeed#*#");
+    }
+
+    public String activateAcc() {
+        return go("#ACC#ON#*#");
+    }
+
+    public String cancelAcc() {
+        return go("#ACC#OFF#*#");
     }
 
 }

@@ -41,6 +41,11 @@ public class OperationsFragment extends Fragment {
         common.locationAction(view);
     }
 
+    @OnClick(R.id.btnGetLocationSms)
+    public void checkStatusAction() {
+        emitter.emit(getString(R.string.get_location_sms), commands.getLocationSms());
+    }
+
     @OnClick(R.id.btnLockVehicle)
     public void lockAction() {
         common.lockAction();
@@ -59,11 +64,6 @@ public class OperationsFragment extends Fragment {
     @OnClick(R.id.btnTracker)
     public void trackerAction() {
         emitter.emit(getString(R.string.tracker), commands.tracker());
-    }
-
-    @OnClick(R.id.btnCheckStatus)
-    public void checkStatusAction() {
-        emitter.emit(getString(R.string.check_status), commands.check());
     }
 
 }

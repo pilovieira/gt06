@@ -17,7 +17,8 @@
     <string name="log_info">Log Info</string>
     <string name="lock_vehicle">Lock Vehicle</string>
     <string name="unlock_vehicle">Unlock Vehicle</string>
-    <string name="get_location">Get Location</string>
+    <string name="get_location">Get Location (Call)</string>
+    <string name="get_location_sms">Get Location (SMS)</string>
     <string name="obtain_firmware_version">Obtain Firmware Version</string>
     <string name="gps_restart">GPS Restart</string>
     <string name="tracker_restart">Tracker Restart</string>
@@ -49,6 +50,8 @@
     <string name="location">Location</string>
     <string name="info">Info</string>
     <string name="number">Number</string>
+    <string name="diameter">Diameter (1 = 100m)</string>
+    <string name="speed3Digits">Speed (3 digits)</string>
     <string name="okay">Okay</string>
     <string name="ip">IP</string>
     <string name="port">Port</string>
@@ -82,7 +85,6 @@
     <string name="tracker">Change to Tracker</string>
     <string name="config_parameters">Config Parameters</string>
     <string name="tracker_mode">Tracker Mode</string>
-    <string name="check_status">Check Status</string>
     <string name="adjust_timezone">Adjust TimeZone</string>
     <string name="direction">Direction (W, E)</string>
     <string name="hours">Hours</string>
@@ -90,5 +92,13 @@
     <string name="are_you_sure">Are you sure ?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="geo_fence">Geo Fence</string>
+    <string name="activate_geo_fence">Activate Geo Fence</string>
+    <string name="cancel_geo_fence">Cancel Geo Fence</string>
+    <string name="overspeed_alarm">Overspeed Alarm</string>
+    <string name="activate_overspeed_alarm">Activate Overspeed Alarm</string>
+    <string name="cancel_overspeed_alarm">Cancel Overspeed Alarm</string>
+    <string name="acc_alarm">ACC Alarm</string>
+    <string name="advanced_operations">Advanced Operations</string>
 
 </resources>

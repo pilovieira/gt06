@@ -11,6 +11,10 @@
             android:icon="@drawable/ic_place_black_24dp"
             android:title="@string/operation_commands" />
         <item
+            android:id="@+id/nav_advanced_operations"
+            android:icon="@drawable/ic_place_black_24dp"
+            android:title="@string/advanced_operations" />
+        <item
             android:id="@+id/nav_configs"
             android:icon="@drawable/ic_settings_applications_black_24px"
             android:title="@string/config_commands" />
