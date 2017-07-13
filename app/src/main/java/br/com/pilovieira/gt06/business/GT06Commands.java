@@ -101,7 +101,7 @@ public class GT06Commands {
     }
 
     public String setIpAndPort(String ip, String port) {
-        return go(String.format("#IP#*#%s#%s#00#", ip, port));
+        return go(String.format("#IP#*#%s#%s#", ip, port));
     }
 
 }

@@ -6,7 +6,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="operation_commands">Operation Commands</string>
+    <string name="basic_commands">Basic Commands</string>
     <string name="advanced_configs">Advanced Configs</string>
     <string name="requisition_resolver_info_title">Accurate Tracker GT06 Info</string>
     <string name="fragment_info_info_title">Info</string>
@@ -99,12 +99,14 @@
     <string name="activate_overspeed_alarm">Activate Overspeed Alarm</string>
     <string name="cancel_overspeed_alarm">Cancel Overspeed Alarm</string>
     <string name="acc_alarm">ACC Alarm</string>
-    <string name="advanced_operations">Advanced Operations</string>
+    <string name="advanced_commands">Advanced Commands</string>
     <string name="apn_config_commands">APN Config Commands</string>
     <string name="set_apn">Set APN</string>
     <string name="apn_name">APN Name</string>
     <string name="user">APN User</string>
     <string name="pass">APN Pass</string>
     <string name="set_ip_and_port">Set IP and Port</string>
+    <string name="activate_acc_alarm">Activate ACC Alarm</string>
+    <string name="cancel_acc_alarm">Cancel Acc Alarm</string>
 
 </resources>

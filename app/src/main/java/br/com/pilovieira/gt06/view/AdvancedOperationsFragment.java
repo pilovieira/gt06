@@ -66,17 +66,17 @@ public class AdvancedOperationsFragment extends Fragment {
 
     @OnClick(R.id.btnCancelOverSpeed)
     public void cancelOverSpeedAction() {
-        emitter.emit(getString(R.string.cancel_geo_fence), commands.cancelSpeedAlarm());
+        emitter.emit(getString(R.string.cancel_overspeed_alarm), commands.cancelSpeedAlarm());
     }
 
     @OnClick(R.id.btnActivateAcc)
     public void activateAccAction() {
-        emitter.emit(getString(R.string.cancel_geo_fence), commands.activateAcc());
+        emitter.emit(getString(R.string.activate_acc_alarm), commands.activateAcc());
     }
 
     @OnClick(R.id.btnCancelAcc)
     public void cancelAccAction() {
-        emitter.emit(getString(R.string.cancel_geo_fence), commands.cancelAcc());
+        emitter.emit(getString(R.string.cancel_acc_alarm), commands.cancelAcc());
     }
 
 }

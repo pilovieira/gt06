@@ -87,7 +87,7 @@ public class ConfigsFragment extends Fragment {
 
     @OnClick(R.id.btnSetIpAndPort)
     public void btnSetIpAndPortClicked() {
-        ListenerProvider.openDialogTwoParam(this, btnSetIpAndPort, R.string.direction, R.string.hours, new ListenerProvider.CommandTwoParam() {
+        ListenerProvider.openDialogTwoParam(this, btnSetIpAndPort, R.string.ip, R.string.port, new ListenerProvider.CommandTwoParam() {
             @Override
             public void apply(String ip, String port) {
                 emitter.emit(btnSetIpAndPort.getText().toString(), commands.setIpAndPort(ip, port));
@@ -97,7 +97,7 @@ public class ConfigsFragment extends Fragment {
 
     @OnClick(R.id.btnTimeZone)
     public void btnTimeZoneClicked() {
-        ListenerProvider.openDialogTwoParam(this, btnTimeZone, R.string.ip, R.string.port, new ListenerProvider.CommandTwoParam() {
+        ListenerProvider.openDialogTwoParam(this, btnTimeZone, R.string.direction, R.string.hours, new ListenerProvider.CommandTwoParam() {
             @Override
             public void apply(String direction, String hours) {
                 emitter.emit(btnTimeZone.getText().toString(), commands.timeZone(direction, hours));

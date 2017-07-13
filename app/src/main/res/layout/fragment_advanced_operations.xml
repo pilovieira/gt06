@@ -106,14 +106,14 @@
                     android:id="@+id/btnActivateAcc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/activate_overspeed_alarm"
+                    android:text="@string/activate_acc_alarm"
                     style="@style/Widget.AppCompat.Button.Colored"/>
 
                 <Button
                     android:id="@+id/btnCancelAcc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/cancel_overspeed_alarm"
+                    android:text="@string/cancel_acc_alarm"
                     style="@style/Widget.AppCompat.Button.Colored"/>
 
             </LinearLayout>
