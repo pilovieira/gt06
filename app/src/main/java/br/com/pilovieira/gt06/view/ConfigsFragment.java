@@ -3,19 +3,20 @@ package br.com.pilovieira.gt06.view;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+
 import br.com.pilovieira.gt06.R;
-import br.com.pilovieira.gt06.business.ListenerProvider;
 import br.com.pilovieira.gt06.business.GT06Commands;
+import br.com.pilovieira.gt06.business.ListenerProvider;
 import br.com.pilovieira.gt06.comm.SMSEmitter;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -24,12 +25,12 @@ public class ConfigsFragment extends Fragment {
     private GT06Commands commands;
     private SMSEmitter emitter;
 
-    @Bind(R.id.btnChangePassword) Button btnChangePassword;
-    @Bind(R.id.btnAuthorize) Button btnAuthorize;
-    @Bind(R.id.btnRemoveAuth) Button btnRemoveAuth;
-    @Bind(R.id.btnTimeZone) Button btnTimeZone;
-    @Bind(R.id.btnSetApn) Button btnSetApn;
-    @Bind(R.id.btnSetIpAndPort) Button btnSetIpAndPort;
+    @BindView(R.id.btnChangePassword) Button btnChangePassword;
+    @BindView(R.id.btnAuthorize) Button btnAuthorize;
+    @BindView(R.id.btnRemoveAuth) Button btnRemoveAuth;
+    @BindView(R.id.btnTimeZone) Button btnTimeZone;
+    @BindView(R.id.btnSetApn) Button btnSetApn;
+    @BindView(R.id.btnSetIpAndPort) Button btnSetIpAndPort;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

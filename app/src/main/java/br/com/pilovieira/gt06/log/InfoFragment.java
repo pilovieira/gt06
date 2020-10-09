@@ -2,25 +2,26 @@ package br.com.pilovieira.gt06.log;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
+import androidx.fragment.app.Fragment;
+
 import java.util.List;
 
 import br.com.pilovieira.gt06.R;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class InfoFragment extends Fragment {
 
     private View view;
-    @Bind(R.id.listLog) ListView logList;
-    @Bind(R.id.btnLogClear) Button btnClear;
+    @BindView(R.id.listLog) ListView logList;
+    @BindView(R.id.btnLogClear) Button btnClear;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

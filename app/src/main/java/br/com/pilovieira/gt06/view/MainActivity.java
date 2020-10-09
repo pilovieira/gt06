@@ -4,16 +4,16 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -24,16 +24,16 @@ import br.com.pilovieira.gt06.R;
 import br.com.pilovieira.gt06.business.CommonOperations;
 import br.com.pilovieira.gt06.location.LocationHistoryActivity;
 import br.com.pilovieira.gt06.log.InfoFragment;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.drawer_layout) DrawerLayout drawer;
-    @Bind(R.id.nav_view) NavigationView navigationView;
-    @Bind(R.id.adView) AdView mAdView;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.drawer_layout) DrawerLayout drawer;
+    @BindView(R.id.nav_view) NavigationView navigationView;
+    @BindView(R.id.adView) AdView mAdView;
 
     private CommonOperations common;
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         configureDrawer();
         configureNavigationMenu();
-        requestPermissions();
+        //requestPermissions();
         mAdView.loadAd(new AdRequest.Builder().build());
     }
 
@@ -67,15 +67,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         onNavigationItemSelected(item);
     }
 
-    private void requestPermissions() {
-        String[] permissions = new String[] {
-                android.Manifest.permission.SEND_SMS,
-                Manifest.permission.CALL_PHONE,
-                Manifest.permission.ACCESS_FINE_LOCATION
-        };
-        if (ContextCompat.checkSelfPermission(this, permissions[0]) != PackageManager.PERMISSION_GRANTED)
-            ActivityCompat.requestPermissions(this, permissions, 1000);
-    }
+//    private void requestPermissions() {
+//        String[] permissions = new String[] {
+//                android.Manifest.permission.SEND_SMS,
+//                Manifest.permission.CALL_PHONE,
+//                Manifest.permission.ACCESS_FINE_LOCATION
+//        };
+//        if (ContextCompat.checkSelfPermission(this, permissions[0]) != PackageManager.PERMISSION_GRANTED)
+//            ActivityCompat.requestPermissions(this, permissions, 1000);
+//    }
 
     @Override
     public void onBackPressed() {
@@ -134,9 +134,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_parameters:
                 replaceFragment(new ParametersFragment());
-                break;
-            case R.id.nav_location_history:
-                startActivity(new Intent(this, LocationHistoryActivity.class));
+//                break;
+//            case R.id.nav_location_history:
+//                startActivity(new Intent(this, LocationHistoryActivity.class));
                 return;
         }
 

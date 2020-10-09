@@ -1,7 +1,7 @@
 package br.com.pilovieira.gt06.location;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -61,7 +61,7 @@ public class LocationHistoryActivity extends FragmentActivity implements OnMapRe
         for (Marker marker : markers)
             polylineOptions.add(marker.getPosition());
 
-        polylineOptions.color(R.color.wallet_holo_blue_light);
+//        polylineOptions.color(R.color.wallet_holo_blue_light);
         polyLine = mMap.addPolyline(polylineOptions);
     }
 

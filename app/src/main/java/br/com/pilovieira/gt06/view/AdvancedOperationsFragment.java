@@ -2,25 +2,26 @@ package br.com.pilovieira.gt06.view;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import br.com.pilovieira.gt06.R;
 import br.com.pilovieira.gt06.business.GT06Commands;
 import br.com.pilovieira.gt06.business.ListenerProvider;
 import br.com.pilovieira.gt06.comm.SMSEmitter;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class AdvancedOperationsFragment extends Fragment {
 
-    @Bind(R.id.btnActivateGeoFence) Button btnActivateGeoFence;
-    @Bind(R.id.btnActivateOverSpeed) Button btnActivateOverSpeed;
+    @BindView(R.id.btnActivateGeoFence) Button btnActivateGeoFence;
+    @BindView(R.id.btnActivateOverSpeed) Button btnActivateOverSpeed;
 
     private GT06Commands commands;
     private SMSEmitter emitter;

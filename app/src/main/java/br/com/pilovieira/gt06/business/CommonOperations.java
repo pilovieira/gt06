@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 import android.view.View;
 import android.widget.Toast;
 
@@ -31,13 +31,13 @@ public class CommonOperations {
             return;
         }
 
-        Intent intent = new Intent(Intent.ACTION_CALL);
+        Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setData(Uri.parse(commands.getLocation()));
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(context, R.string.please_add_call_permission, Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//            Toast.makeText(context, R.string.please_add_call_permission, Toast.LENGTH_SHORT).show();
+//            return;
+//        }
 
         context.startActivity(intent);
     }
