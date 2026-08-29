@@ -3,9 +3,6 @@
 
     <string name="app_name">Tracker GT06</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="basic_commands">Basic Commands</string>
     <string name="requisition_resolver_info_title">Accurate Tracker GT06 Info</string>
     <string name="notification_default_text">Click here for more details</string>
