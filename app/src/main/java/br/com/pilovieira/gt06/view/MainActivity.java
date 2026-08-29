@@ -22,47 +22,49 @@ import com.google.android.gms.ads.AdView;
 
 import br.com.pilovieira.gt06.R;
 import br.com.pilovieira.gt06.business.CommonOperations;
+import br.com.pilovieira.gt06.databinding.ActivityMainBinding;
 import br.com.pilovieira.gt06.location.LocationHistoryActivity;
 import br.com.pilovieira.gt06.log.InfoFragment;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.drawer_layout) DrawerLayout drawer;
-    @BindView(R.id.nav_view) NavigationView navigationView;
-    @BindView(R.id.adView) AdView mAdView;
+    private ActivityMainBinding binding;
+    private DrawerLayout drawer;
 
     private CommonOperations common;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        drawer = binding.drawerLayout;
 
         common = new CommonOperations(getBaseContext());
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.appBarMain.toolbar);
 
         configureDrawer();
         configureNavigationMenu();
         //requestPermissions();
-        mAdView.loadAd(new AdRequest.Builder().build());
+        binding.appBarMain.contentMain.adView.loadAd(new AdRequest.Builder().build());
+
+        binding.appBarMain.contentMain.btnHotGetLocation.setOnClickListener(this::locationAction);
+        binding.appBarMain.contentMain.btnHotLock.setOnClickListener(view -> lockAction());
+        binding.appBarMain.contentMain.btnHotUnlock.setOnClickListener(view -> unlockAction());
     }
 
     private void configureDrawer() {
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, binding.appBarMain.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
     }
 
     private void configureNavigationMenu() {
-        navigationView.setNavigationItemSelectedListener(this);
+        binding.navView.setNavigationItemSelectedListener(this);
 
-        MenuItem item = navigationView.getMenu().getItem(0);
+        MenuItem item = binding.navView.getMenu().getItem(0);
         item.setChecked(true);
         onNavigationItemSelected(item);
     }
@@ -79,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START))
             drawer.closeDrawer(GravityCompat.START);
         else
@@ -96,17 +97,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onRestoreInstanceState(savedInstanceState);
     }
 
-    @OnClick(R.id.btnHotGetLocation)
     public void locationAction(View view) {
         common.locationAction(view);
     }
 
-    @OnClick(R.id.btnHotLock)
     public void lockAction() {
         common.lockAction();
     }
 
-    @OnClick(R.id.btnHotUnlock)
     public void unlockAction() {
         common.unlockAction();
     }
@@ -119,25 +117,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void selectItem(MenuItem menuItem) {
-        switch(menuItem.getItemId()) {
-            case R.id.nav_info:
-                replaceFragment(new InfoFragment());
-                break;
-            case R.id.nav_operations:
-                replaceFragment(new OperationsFragment());
-                break;
-            case R.id.nav_advanced_operations:
-                replaceFragment(new AdvancedOperationsFragment());
-                break;
-            case R.id.nav_configs:
-                replaceFragment(new ConfigsFragment());
-                break;
-            case R.id.nav_parameters:
-                replaceFragment(new ParametersFragment());
-//                break;
-//            case R.id.nav_location_history:
-//                startActivity(new Intent(this, LocationHistoryActivity.class));
-                return;
+        int itemId = menuItem.getItemId();
+        if (itemId == R.id.nav_info) {
+            replaceFragment(new InfoFragment());
+        } else if (itemId == R.id.nav_operations) {
+            replaceFragment(new OperationsFragment());
+        } else if (itemId == R.id.nav_advanced_operations) {
+            replaceFragment(new AdvancedOperationsFragment());
+        } else if (itemId == R.id.nav_configs) {
+            replaceFragment(new ConfigsFragment());
+        } else if (itemId == R.id.nav_parameters) {
+            replaceFragment(new ParametersFragment());
+//        } else if (itemId == R.id.nav_location_history) {
+//            startActivity(new Intent(this, LocationHistoryActivity.class));
+            return;
         }
 
         menuItem.setChecked(true);

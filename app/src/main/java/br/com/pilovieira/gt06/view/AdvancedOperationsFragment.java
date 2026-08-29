@@ -14,14 +14,13 @@ import br.com.pilovieira.gt06.R;
 import br.com.pilovieira.gt06.business.GT06Commands;
 import br.com.pilovieira.gt06.business.ListenerProvider;
 import br.com.pilovieira.gt06.comm.SMSEmitter;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import br.com.pilovieira.gt06.databinding.FragmentAdvancedOperationsBinding;
 
 public class AdvancedOperationsFragment extends Fragment {
 
-    @BindView(R.id.btnActivateGeoFence) Button btnActivateGeoFence;
-    @BindView(R.id.btnActivateOverSpeed) Button btnActivateOverSpeed;
+    private FragmentAdvancedOperationsBinding binding;
+    private Button btnActivateGeoFence;
+    private Button btnActivateOverSpeed;
 
     private GT06Commands commands;
     private SMSEmitter emitter;
@@ -35,12 +34,20 @@ public class AdvancedOperationsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_advanced_operations, container, false);
-        ButterKnife.bind(this, view);
-        return view;
+        binding = FragmentAdvancedOperationsBinding.inflate(inflater, container, false);
+        btnActivateGeoFence = binding.btnActivateGeoFence;
+        btnActivateOverSpeed = binding.btnActivateOverSpeed;
+
+        binding.btnActivateGeoFence.setOnClickListener(view -> activateGeoFenceAction());
+        binding.btnCancelGeoFence.setOnClickListener(view -> cancelGeoFenceAction());
+        binding.btnActivateOverSpeed.setOnClickListener(view -> activateOverSpeedAction());
+        binding.btnCancelOverSpeed.setOnClickListener(view -> cancelOverSpeedAction());
+        binding.btnActivateAcc.setOnClickListener(view -> activateAccAction());
+        binding.btnCancelAcc.setOnClickListener(view -> cancelAccAction());
+
+        return binding.getRoot();
     }
 
-    @OnClick(R.id.btnActivateGeoFence)
     public void activateGeoFenceAction() {
         ListenerProvider.openDialogOneParam(this, btnActivateGeoFence, R.string.diameter, new ListenerProvider.CommandOneParam() {
             @Override
@@ -50,12 +57,10 @@ public class AdvancedOperationsFragment extends Fragment {
         });
     }
 
-    @OnClick(R.id.btnCancelGeoFence)
     public void cancelGeoFenceAction() {
         emitter.emit(getString(R.string.cancel_geo_fence), commands.cancelGeoFence());
     }
 
-    @OnClick(R.id.btnActivateOverSpeed)
     public void activateOverSpeedAction() {
         ListenerProvider.openDialogOneParam(this, btnActivateOverSpeed, R.string.speed3Digits, new ListenerProvider.CommandOneParam() {
             @Override
@@ -65,17 +70,14 @@ public class AdvancedOperationsFragment extends Fragment {
         });
     }
 
-    @OnClick(R.id.btnCancelOverSpeed)
     public void cancelOverSpeedAction() {
         emitter.emit(getString(R.string.cancel_overspeed_alarm), commands.cancelSpeedAlarm());
     }
 
-    @OnClick(R.id.btnActivateAcc)
     public void activateAccAction() {
         emitter.emit(getString(R.string.activate_acc_alarm), commands.activateAcc());
     }
 
-    @OnClick(R.id.btnCancelAcc)
     public void cancelAccAction() {
         emitter.emit(getString(R.string.cancel_acc_alarm), commands.cancelAcc());
     }
