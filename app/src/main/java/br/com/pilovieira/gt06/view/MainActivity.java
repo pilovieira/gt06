@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity
 
         common = new CommonOperations(getBaseContext());
 
-        setSupportActionBar(binding.toolbar);
-
         binding.navBottom.setOnItemSelectedListener(this);
         binding.navBottom.setOnItemReselectedListener(this);
 
