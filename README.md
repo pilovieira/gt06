@@ -1,8 +1,9 @@
 # GT06 Tracker
 
 ![Platform](https://img.shields.io/badge/platform-Android-3DDC84?logo=android&logoColor=white)
-![Min SDK](https://img.shields.io/badge/minSdk-21-blue)
-![Target SDK](https://img.shields.io/badge/targetSdk-34-blue)
+![Min SDK](https://img.shields.io/badge/minSdk-23-blue)
+![Target SDK](https://img.shields.io/badge/targetSdk-35-blue)
+![Version](https://img.shields.io/badge/version-3.0.0-orange)
 ![Java](https://img.shields.io/badge/Java-17-orange?logo=openjdk&logoColor=white)
 ![License](https://img.shields.io/badge/license-unlicensed-lightgrey)
 
@@ -28,13 +29,13 @@ platform account needed.
 - Java, Android Views (ViewBinding)
 - [OrmLite](https://ormlite.com/) for local persistence
 - Google Play Services (Ads, Maps)
-- Gradle 8.9 / Android Gradle Plugin 8.5.2
+- Gradle 9.5.0 / Android Gradle Plugin 9.3.2
 
 ## Requirements
 
-- Android Studio (Koala or newer recommended)
+- Android Studio (Ladybug or newer recommended)
 - JDK 17
-- Android SDK Platform 34
+- Android SDK Platform 35
 
 ## Getting started
 
@@ -54,8 +55,6 @@ device or emulator.
 | `./gradlew assembleDebug` | Build the debug APK |
 | `./gradlew assembleRelease` | Build the release APK |
 | `./gradlew installDebug` | Install the debug build on a connected device/emulator |
-| `./gradlew test` | Run unit tests |
-| `./gradlew connectedAndroidTest` | Run instrumented tests |
 
 ## Project structure
 
