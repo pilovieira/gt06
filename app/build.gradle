@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     namespace = 'br.com.pilovieira.gt06'
-    compileSdk = 35
+    compileSdk = 37
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "br.com.pilovieira.gt06"
         minSdk = 23
-        targetSdk = 35
+        targetSdk = 37
         versionCode = 3
         versionName = "3.0.0"
         vectorDrawables.useSupportLibrary = true
