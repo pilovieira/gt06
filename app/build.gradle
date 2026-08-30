@@ -1,25 +1,24 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "br.com.pilovieira.gt06"
-    compileSdk 35
+    namespace = 'br.com.pilovieira.gt06'
+    compileSdk = 35
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
     defaultConfig {
-        applicationId "br.com.pilovieira.gt06"
-        minSdkVersion 23
-        targetSdkVersion 35
-        versionCode 2
-        versionName "2.0.0"
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        applicationId = "br.com.pilovieira.gt06"
+        minSdk = 23
+        targetSdk = 35
+        versionCode = 2
+        versionName = "2.0.0"
         vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled = false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -28,7 +27,7 @@ android {
     }
 
     buildFeatures {
-        viewBinding true
+        viewBinding = true
     }
 }
 
@@ -40,8 +39,4 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:20.0.0'
 
     implementation 'com.j256.ormlite:ormlite-android:6.1'
-
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 }
