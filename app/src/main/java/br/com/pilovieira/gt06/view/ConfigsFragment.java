@@ -16,21 +16,20 @@ import br.com.pilovieira.gt06.R;
 import br.com.pilovieira.gt06.business.GT06Commands;
 import br.com.pilovieira.gt06.business.ListenerProvider;
 import br.com.pilovieira.gt06.comm.SMSEmitter;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import br.com.pilovieira.gt06.databinding.FragmentConfigsBinding;
 
 public class ConfigsFragment extends Fragment {
 
     private GT06Commands commands;
     private SMSEmitter emitter;
 
-    @BindView(R.id.btnChangePassword) Button btnChangePassword;
-    @BindView(R.id.btnAuthorize) Button btnAuthorize;
-    @BindView(R.id.btnRemoveAuth) Button btnRemoveAuth;
-    @BindView(R.id.btnTimeZone) Button btnTimeZone;
-    @BindView(R.id.btnSetApn) Button btnSetApn;
-    @BindView(R.id.btnSetIpAndPort) Button btnSetIpAndPort;
+    private FragmentConfigsBinding binding;
+    private Button btnChangePassword;
+    private Button btnAuthorize;
+    private Button btnRemoveAuth;
+    private Button btnTimeZone;
+    private Button btnSetApn;
+    private Button btnSetIpAndPort;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,12 +40,26 @@ public class ConfigsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_configs, container, false);
-        ButterKnife.bind(this, view);
-        return view;
+        binding = FragmentConfigsBinding.inflate(inflater, container, false);
+        btnChangePassword = binding.btnChangePassword;
+        btnAuthorize = binding.btnAuthorize;
+        btnRemoveAuth = binding.btnRemoveAuth;
+        btnTimeZone = binding.btnTimeZone;
+        btnSetApn = binding.btnSetApn;
+        btnSetIpAndPort = binding.btnSetIpAndPort;
+
+        binding.btnChangePassword.setOnClickListener(view -> btnChangePasswordClicked());
+        binding.btnAuthorize.setOnClickListener(view -> btnAuthorizeClicked());
+        binding.btnRemoveAuth.setOnClickListener(view -> mountBtnDeleteNumber());
+        binding.btnSetApn.setOnClickListener(view -> btnSetApnClicked());
+        binding.btnSetIpAndPort.setOnClickListener(view -> btnSetIpAndPortClicked());
+        binding.btnTimeZone.setOnClickListener(view -> btnTimeZoneClicked());
+        binding.btnRestart.setOnClickListener(view -> restartAction());
+        binding.btnBegin.setOnClickListener(view -> beginAction());
+
+        return binding.getRoot();
     }
 
-    @OnClick(R.id.btnChangePassword)
     public void btnChangePasswordClicked() {
         ListenerProvider.openDialogTwoParam(this, btnChangePassword, R.string.old_password, R.string.new_password, new ListenerProvider.CommandTwoParam() {
             @Override
@@ -56,7 +69,6 @@ public class ConfigsFragment extends Fragment {
         });
     }
 
-    @OnClick(R.id.btnAuthorize)
     public void btnAuthorizeClicked() {
         ListenerProvider.openDialogOneParam(this, btnAuthorize, R.string.number, new ListenerProvider.CommandOneParam() {
             @Override
@@ -66,7 +78,6 @@ public class ConfigsFragment extends Fragment {
         });
     }
 
-    @OnClick(R.id.btnRemoveAuth)
     public void mountBtnDeleteNumber() {
         ListenerProvider.openDialogOneParam(this, btnRemoveAuth, R.string.number, new ListenerProvider.CommandOneParam() {
             @Override
@@ -76,7 +87,6 @@ public class ConfigsFragment extends Fragment {
         });
     }
 
-    @OnClick(R.id.btnSetApn)
     public void btnSetApnClicked() {
         ListenerProvider.openDialogThreeParam(this, btnSetApn, R.string.apn_name, R.string.user, R.string.pass, new ListenerProvider.CommandThreeParam() {
             @Override
@@ -86,7 +96,6 @@ public class ConfigsFragment extends Fragment {
         });
     }
 
-    @OnClick(R.id.btnSetIpAndPort)
     public void btnSetIpAndPortClicked() {
         ListenerProvider.openDialogTwoParam(this, btnSetIpAndPort, R.string.ip, R.string.port, new ListenerProvider.CommandTwoParam() {
             @Override
@@ -96,7 +105,6 @@ public class ConfigsFragment extends Fragment {
         });
     }
 
-    @OnClick(R.id.btnTimeZone)
     public void btnTimeZoneClicked() {
         ListenerProvider.openDialogTwoParam(this, btnTimeZone, R.string.direction, R.string.hours, new ListenerProvider.CommandTwoParam() {
             @Override
@@ -106,12 +114,10 @@ public class ConfigsFragment extends Fragment {
         });
     }
 
-    @OnClick(R.id.btnRestart)
     public void restartAction() {
         emitter.emit(getString(R.string.restart_tracker), commands.reset());
     }
 
-    @OnClick(R.id.btnBegin)
     public void beginAction() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle(R.string.are_you_sure);

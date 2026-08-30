@@ -1,50 +1,42 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    namespace = 'br.com.pilovieira.gt06'
+    compileSdk = 37
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     defaultConfig {
-        applicationId "br.com.pilovieira.gt06"
-        minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 2
-        versionName "2.0.0"
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        applicationId = "br.com.pilovieira.gt06"
+        minSdk = 23
+        targetSdk = 37
+        versionCode = 4
+        versionName = "3.0.1"
         vectorDrawables.useSupportLibrary = true
-        multiDexEnabled true
     }
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled = false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
             applicationIdSuffix ".developer"
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.google.android.material:material:1.14.0'
+    implementation 'androidx.appcompat:appcompat:1.8.0'
 
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.browser:browser:1.2.0'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.mediarouter:mediarouter:1.1.0'
-    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.google.android.gms:play-services-ads:25.4.0'
+    implementation 'com.google.android.gms:play-services-maps:20.0.0'
 
-    implementation 'com.google.android.gms:play-services-ads:19.4.0'
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
-
-    implementation 'com.j256.ormlite:ormlite-android:4.45'
-    implementation 'com.jakewharton:butterknife:10.0.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
-
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.j256.ormlite:ormlite-android:6.1'
 }

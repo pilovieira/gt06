@@ -11,17 +11,15 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import br.com.pilovieira.gt06.R;
+import br.com.pilovieira.gt06.databinding.FragmentParametersBinding;
 import br.com.pilovieira.gt06.persist.Prefs;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class ParametersFragment extends Fragment {
 
     private Prefs prefs;
 
-    @BindView(R.id.textTrackerNumber) EditText textTrackerNumber;
-    @BindView(R.id.textPassword) EditText textPassword;
+    private EditText textTrackerNumber;
+    private EditText textPassword;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,13 +29,14 @@ public class ParametersFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_parameters, container, false);
-        ButterKnife.bind(this, view);
+        FragmentParametersBinding binding = FragmentParametersBinding.inflate(inflater, container, false);
+        textTrackerNumber = binding.textTrackerNumber;
+        textPassword = binding.textPassword;
 
         setTextTrackerNumber();
         setTextPassword();
 
-        return view;
+        return binding.getRoot();
     }
 
     private void setTextTrackerNumber() {
