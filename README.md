@@ -2,7 +2,7 @@
 
 ![Platform](https://img.shields.io/badge/platform-Android-3DDC84?logo=android&logoColor=white)
 ![Min SDK](https://img.shields.io/badge/minSdk-23-blue)
-![Target SDK](https://img.shields.io/badge/targetSdk-35-blue)
+![Target SDK](https://img.shields.io/badge/targetSdk-37-blue)
 ![Version](https://img.shields.io/badge/version-3.0.0-orange)
 ![Java](https://img.shields.io/badge/Java-17-orange?logo=openjdk&logoColor=white)
 ![License](https://img.shields.io/badge/license-unlicensed-lightgrey)
@@ -35,7 +35,7 @@ platform account needed.
 
 - Android Studio (Ladybug or newer recommended)
 - JDK 17
-- Android SDK Platform 35
+- Android SDK Platform 37
 
 ## Getting started
 
